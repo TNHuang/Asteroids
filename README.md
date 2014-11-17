@@ -1,5 +1,7 @@
 Asteroid!
 
+Not-yet live, open index.html in chrome to play the game
+
 Use WASD key to move ship, press space to fire
 
 New addition!
