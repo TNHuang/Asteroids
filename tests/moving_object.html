@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<script src="MovingObject.js"></script>
+	</head>
+<body>
+	<canvas width="800" height="600" id="canvas"></canvas>
+<script>
+
+//not using constructor function
+// var mo = new Asteroids.MovingObject([30, 30],[10, 10],5,"#00FF00");
+
+//using constructor function
+var mo = new Asteroids.MovingObject(
+  { pos: [30, 30], vel: [10, 10], radius: 5, color: "#00FF00"}
+);
+
+document.write(mo.pos, "<br>", mo.vel, "<br>", mo.radius, "<br>", mo.color);
+
+//now testing draw
+var canvas = document.getElementById('canvas');
+var c = canvas.getContext('2d');
+mo.draw(c);
+
+//now testing move
+mo.move(c);
+mo.draw(c);
+</script>
+</body>
+</html>

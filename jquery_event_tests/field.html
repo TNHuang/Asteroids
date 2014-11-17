@@ -1,0 +1,114 @@
+<html>
+<head>
+  <style media="screen">
+    .red {
+      background: red;
+    }
+    .blue {
+      background: blue;
+    }
+    #canvas {
+      border: 1px solid red;
+    }
+  </style>
+  <script src="../lib/jquery-1.4.2.min.js"></script>
+
+</head>
+<body>
+  <div id="clicklog"></div>
+  <div id="log"></div>
+  <canvas width="600" height="600" id="canvas"></canvas>
+
+      <div id="target">
+      Move here
+    </div>
+    <div id="other">
+      Trigger the handler
+    </div>
+
+<p>
+
+</p>
+
+  <div class='coord'>
+
+  </div>
+<script language="JavaScript">
+$(document).ready(function(){
+  var a = document.getElementById("canvas");
+  var ctx = a.getContext("2d");
+  function draw_line(options){
+    var start = options[0];
+    var end = options[1];
+
+
+    ctx.beginPath();
+    ctx.lineWidth = "1";
+    ctx.moveTo(start[0], start[1]);
+    ctx.lineTo(end[0]-10, end[1]-30);
+    ctx.moveTo(20, 11);
+    ctx.lineTo(end[0]-10, end[1]-30);
+    ctx.moveTo(569, 520);
+    ctx.lineTo(end[0]-10, end[1]-30);
+    ctx.moveTo(60, 568);
+    ctx.lineTo(end[0]-10, end[1]-30);
+    ctx.stroke();
+    ctx.fill();
+  };
+
+  function draw_b(options) {
+    var x = options.x;
+    var y = options.y;
+    ctx.fillStyle = "#ccc";
+    ctx.beginPath();
+    ctx.arc(
+      x,y,
+      20,
+      0,
+      2* Math.PI,
+      false
+    );
+    ctx.fill();
+  };
+
+  var coords = [];
+
+  var cav = $("#canvas");
+  cav.mousemove( function(event){
+   var msg = "handler for .mousemove() called at ";
+   msg += event.pageX + ", " + event.pageY;
+   $("#log").html('<div>'+ msg +'</div>');
+   ctx.clearRect(0,0, 600, 590);
+   ctx.font ="30px Verdana";
+   ctx.fillText("(" + event.pageX +", "+ event.pageY + ")", event.pageX, event.pageY-50);
+   draw_b({x: 555, y: 106});
+   draw_b({x: 20, y: 11});
+   draw_b({x: 569, y: 520});
+   draw_b({x: 60, y: 568});
+   draw_line([[555, 106], [event.pageX, event.pageY]]);
+  });
+
+
+  // $("#canvas").click(function(event){
+  //   var x = event.pageX-10;
+  //   var y = event.pageY-30;
+  //   if (coords.length === 2) {
+  //     // draw_b({x: coords[1][0], y: coords[1][1]});
+  //     draw_line(coords);
+  //     coords = [];
+  //   } else if (coords.length < 2 ){
+  //     coords.push([x, y]);
+  //     draw_b({x: coords[0][0], y: coords[0][1]});
+  //   }
+  //   // draw_b({x: event.pageX-10, y: event.pageY-30 })
+  // });
+
+
+});
+
+
+
+</script>
+</body>
+
+</html>

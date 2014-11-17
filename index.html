@@ -1,0 +1,134 @@
+                        <!--
+                        /~~~\
+                            -/     \--\.
+                          ./           `.
+                        .-/             |\
+                       / /                \
+                    .-/                    \
+                    `/                     |
+                   /                      -)
+                  .                        '.
+                 /                          \
+                 |                          |
+                 |                          /
+                 /                        ./
+                |                     . \ |
+                |                  ) \ .) )
+                |                | | ). )/
+                |               |) )/ ///
+                 .             .)----~~~.
+                 \             /~        \
+                 \            /           \
+                 \           /            '
+                 |          |              |
+                 .          |              |
+                  .         |              |
+                  \         |              \
+                  `          \     \.       |
+                   .         \      \.      |
+                   \          .      \     |
+                    .         \       \    |.
+                    \          .       ~.  /'
+                     \         \      .-.  |
+                     |    -    )      ( \ .-.
+                      .  . |||        . o\(o)
+                      \  |('          \  )\_/
+                      \   \)           ~-~| |
+                      .  |)               \'
+                       \  |~            .-. \)
+                       `..             ./0o  \
+                        \|             (___-  )
+                        \|                 \~~'
+                         \         .--\___  )           Fire,
+                         |        /-'-(_(|~T        <    Fire,
+                         `\     |      <'~~               FIRE!
+                          \     \ ___   \-__.
+                          |      \__---~~   )
+                          |    (           /'
+                          |     ~-'        |
+                          |           _____'
+                          |        _-~
+                          |       /
+                                 .'
+                                 /
+                                 -->
+
+
+<html>
+  <head>
+    <script src="vendor/keymaster.js"></script>
+
+    <script src="lib/util.js"></script>
+    <script src="lib/movingObject.js"></script>
+    <script src="lib/asteroid.js"></script>
+    <script src="lib/ship.js"></script>
+    <script src="lib/bullet.js"></script>
+    <script src="lib/game.js"></script>
+    <script src="lib/gameView.js"></script>
+    <script src="jquery-1.4.2.min.js"></script>
+
+    <style>
+      body {
+        background-image: url("assets/nasa-mission-control.jpg");
+        background-size: 100% 100%;
+      }
+      .clearfix:after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+      canvas {
+          background-image: url("assets/background.jpg");
+          background-size: cover;
+          margin: 20px auto;
+          display: block;
+          border: 3px solid orange;
+      }
+      h2, h3 {
+        text-align: center;
+      }
+      h2:hover{
+        color: white;
+      }
+      .titles-container {
+        text-align:center;
+        display: block;
+        margin: 0 auto;
+        width: 1000px;
+        border-radius: 5px;
+        border: 2px solid black;
+        background: #ccc;
+      }
+
+      h4 {
+        width: 50%;
+        display: block;
+        float: left;
+      }
+    </style>
+  </head>
+
+  <body>
+    <canvas></canvas>
+
+    <div class="titles-container clearfix">
+      <h2>Asteroid!</h2>
+      <h3>Press WASD to move, Press space to fire bullet</h3>
+      <h3>...Or simply move with your cursor to move and left click to fire</h3>
+      <h4 class="kill-count">Kills Count: 0</h4>
+      <h4 class="death-count">Death Count: 0</h4>
+    </div>
+
+    <script>
+      (function () {
+        var canvasEl = document.getElementsByTagName("canvas")[0];
+        canvasEl.width = Asteroids.Game.DIM_X;
+        canvasEl.height = Asteroids.Game.DIM_Y;
+
+        var ctx = canvasEl.getContext("2d");
+        var game = new Asteroids.Game();
+        new Asteroids.GameView(game, ctx, canvasEl).start();
+      })();
+    </script>
+  </body>
+</html>

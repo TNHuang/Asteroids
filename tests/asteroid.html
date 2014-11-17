@@ -1,0 +1,23 @@
+<html>
+<head>
+  <script src="MovingObject.js"></script>
+	<script src="Util.js"></script>
+	<script src="asteroid.js"></script>
+
+</head>
+<body>
+		<canvas width="600" height="600" id="canvas"></canvas>
+<script language="JavaScript">
+var canvas = document.getElementById('canvas');
+var c = canvas.getContext('2d');
+
+
+document.write("hello");
+var dave = new Asteroids.Asteroid({ pos: [30, 30] });
+document.write(dave.vel);
+dave.draw(c);
+
+</script>
+</body>
+
+</html>
